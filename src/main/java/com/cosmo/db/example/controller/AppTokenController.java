@@ -31,8 +31,8 @@ public class AppTokenController {
             produces = {"application/json"},
             method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<TokenModel> getTokenBySrcId(@RequestParam(value = "srcId", required = true) int srcId)  {
-        TokenModel response = appTokenService.getTokenBySrcId(String.valueOf(srcId));
+    public ResponseEntity<TokenModel> getTokenBySrcId(@RequestParam(value = "srcId", required = true) String srcId)  {
+        TokenModel response = appTokenService.getTokenBySrcId(srcId);
         return new ResponseEntity<TokenModel>(response,HttpStatus.OK);
     }
 }
