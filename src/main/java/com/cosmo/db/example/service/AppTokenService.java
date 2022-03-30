@@ -31,6 +31,6 @@ public class AppTokenService {
         entity.setEmailId(tokenModel.getEmailId());
         entity.setSrcId(tokenModel.getSrcId());
         entity.setToken(tokenModel.getToken());
-        appTokenRepository.save(entity);
+        appTokenRepository.save(entity).subscribe();
     }
 }
