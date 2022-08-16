@@ -5,7 +5,7 @@ import com.cosmo.db.example.model.entity.TokenEntity;
 import com.cosmo.db.example.repository.AppTokenRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import reactor.core.publisher.Mono;
+import java.util.List;
 
 @Service
 public class AppTokenService {
@@ -15,8 +15,8 @@ public class AppTokenService {
 
     public TokenModel getTokenBySrcId(String srcId) {
         TokenModel tokenModel =  new TokenModel();
-        Mono<TokenEntity> findBySrcId = appTokenRepository.findBySrcId(srcId);
-        TokenEntity entity = findBySrcId.block();
+        List<TokenEntity> findBySrcId = appTokenRepository.findAll();
+        TokenEntity entity = findBySrcId.get(0);
         tokenModel.setId(entity.getId());
         tokenModel.setEmailId(entity.getEmailId());
         tokenModel.setSrcId(entity.getSrcId());
@@ -31,6 +31,6 @@ public class AppTokenService {
         entity.setEmailId(tokenModel.getEmailId());
         entity.setSrcId(tokenModel.getSrcId());
         entity.setToken(tokenModel.getToken());
-        appTokenRepository.save(entity).subscribe();
+        appTokenRepository.save(entity);
     }
 }
