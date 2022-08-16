@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'cosmodbdemo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_910E1E4A3EE94BDBB673484D5C9576F8 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B28A8329A0BF482A992FEFDCC90B36B7 }}
           package: '*.jar'
