@@ -4,15 +4,23 @@ import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 import org.springframework.data.annotation.Id;
 
-@Container(containerName = "TOKENS")
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+@Table(name = "TOKENS")
 public class TokenEntity {
 
     @Id
     private String id;
 
-    @PartitionKey
+//    @PartitionKey
+    @Column(name = "emailId")
     private String emailId;
+
+    @Column(name = "srcId")
     private String srcId;
+
+    @Column(name = "token")
     private String token;
 
     public TokenEntity() {
